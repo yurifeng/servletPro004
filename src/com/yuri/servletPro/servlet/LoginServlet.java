@@ -1,10 +1,15 @@
 package com.yuri.servletPro.servlet;
 
+import com.yuri.servletPro.bean.User;
+import com.yuri.servletPro.service.LoginService;
+import com.yuri.servletPro.serviceimpl.LoginServiceImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * @author yurifeng
@@ -25,9 +30,26 @@ public class LoginServlet extends HttpServlet {
 
         //System.out.println(uname + " : " + pwd);
 
-        if (uname != null || pwd != null) {
+        //在servlet中验证用户输入的信息是否匹配
+        LoginService ls = new LoginServiceImpl();
 
+        User user = null;
+        try {
+            user = ls.checkLoginService(uname, pwd);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("com.yuri.servletPro.servlet.LoginServlet 这里出现了错误....");
         }
+
+        if (user != null) {
+            resp.getWriter().write("登陆成功....");
+        } else {
+            resp.getWriter().write("登陆失败....");
+        }
+
+        //System.out.println(user);
+
+
         //处理请求信息
         //响应处理请求结果
     }

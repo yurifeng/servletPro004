@@ -12,7 +12,7 @@ import java.io.IOException;
  * @packageName ${PACKAGE_NAME}
  * @projectName servletPro004
  **/
-public class PageServlet extends HttpServlet {
+public class HomeServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
