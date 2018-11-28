@@ -14,6 +14,14 @@ import java.io.IOException;
  **/
 public class HomeServlet extends HttpServlet {
 
+    /**
+     * 显示登陆页面
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -23,8 +31,7 @@ public class HomeServlet extends HttpServlet {
         //处理请求
         //响应处理结果
         //获取request作用域
-        String str = (String) req.getAttribute("str");
-        System.out.println(str);
+        String str = req.getAttribute("str") == null ? "" : (String) req.getAttribute("str");//三目运算
         resp.getWriter().write("<html>");
         resp.getWriter().write("<head>");
         resp.getWriter().write("</head>");

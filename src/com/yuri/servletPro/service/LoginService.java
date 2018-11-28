@@ -20,4 +20,13 @@ public interface LoginService {
      * @return
      */
     User checkLoginService(String uname, String pwd) throws SQLException;
+
+
+    /**
+     * 检验UID信息
+     *
+     * @param uid
+     * @return
+     */
+    User checkUIDService(String uid);
 }

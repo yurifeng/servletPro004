@@ -19,9 +19,28 @@ public class LoginServiceImpl implements LoginService {
     LoginDao ld = new LoginDaoImpl();
 
 
+    /**
+     * 验证登陆
+     *
+     * @param uname
+     * @param pwd
+     * @return
+     * @throws SQLException
+     */
     @Override
     public User checkLoginService(String uname, String pwd) throws SQLException {
 
         return ld.checkLoginDao(uname, pwd);
+    }
+
+    /**
+     * 校验Cookie信息
+     *
+     * @param uid
+     * @return
+     */
+    @Override
+    public User checkUIDService(String uid) {
+        return ld.checkUIDDao(uid);
     }
 }

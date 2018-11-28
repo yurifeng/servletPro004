@@ -20,6 +20,41 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.yuri.servletPro.servlet.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>com.yuri.servletPro.servlet.MainServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CookieServlet</servlet-name>
+        <servlet-class>com.yuri.servletPro.servlet.CookieServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetCookieServlet</servlet-name>
+        <servlet-class>com.yuri.servletPro.servlet.GetCookieServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckCookieServlet</servlet-name>
+        <servlet-class>com.yuri.servletPro.servlet.CheckCookieServlet</servlet-class>
+    </servlet>
+
+
+
+    <servlet-mapping>
+        <servlet-name>CheckCookieServlet</servlet-name>
+        <url-pattern>/checkCk</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetCookieServlet</servlet-name>
+        <url-pattern>/getCk</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CookieServlet</servlet-name>
+        <url-pattern>/ck</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/page</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>

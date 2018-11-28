@@ -5,6 +5,7 @@ import com.yuri.servletPro.service.LoginService;
 import com.yuri.servletPro.serviceimpl.LoginServiceImpl;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,14 @@ import java.sql.SQLException;
  **/
 public class LoginServlet extends HttpServlet {
 
+    /**
+     * 登陆操作的内部逻辑
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -39,18 +48,27 @@ public class LoginServlet extends HttpServlet {
             user = ls.checkLoginService(uname, pwd);
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("com.yuri.servletPro.servlet.LoginServlet 这里出现了错误....");
+            //System.out.println("com.yuri.servletPro.servlet.LoginServlet 这里出现了错误....");
         }
 
         if (user != null) {
-            resp.getWriter().write("登陆成功....");
+
+            //创建Cookie信息实现多天免登陆
+            //Cookie存储的用户的uid
+            Cookie ck = new Cookie("uid", user.getUid() + "");
+            //设置Cookie的有效期
+            ck.setMaxAge(3600 * 24 * 3);
+            ck.setPath("/checkCk");
+            resp.addCookie(ck);
+            resp.sendRedirect("/page");//登陆成功,重定向到main(避免重复提交)
+            return;
         } else {
             req.setAttribute("str", "用户名或密码错误");
-            req.getRequestDispatcher("home").forward(req, resp);//转发相对路径地址
+            req.getRequestDispatcher("home").forward(req, resp);//登陆失败转发到home
             return;
         }
 
-        System.out.println(user);
+        //System.out.println(user);
 
 
         //处理请求信息
