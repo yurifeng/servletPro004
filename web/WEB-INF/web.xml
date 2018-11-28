@@ -36,9 +36,22 @@
         <servlet-name>CheckCookieServlet</servlet-name>
         <servlet-class>com.yuri.servletPro.servlet.CheckCookieServlet</servlet-class>
     </servlet>
-
-
-
+    <servlet>
+        <servlet-name>SessionServlet</servlet-name>
+        <servlet-class>com.yuri.servletPro.Session.SessionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetSessionServlet</servlet-name>
+        <servlet-class>com.yuri.servletPro.Session.GetSessionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetSessionServlet</servlet-name>
+        <url-pattern>/getSession</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SessionServlet</servlet-name>
+        <url-pattern>/ss</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CheckCookieServlet</servlet-name>
         <url-pattern>/checkCk</url-pattern>

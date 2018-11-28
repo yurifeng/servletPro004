@@ -1,10 +1,7 @@
 package com.yuri.servletPro.servlet;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 /**
@@ -31,12 +28,13 @@ public class MainServlet extends HttpServlet {
         //设置响应编码格式
         resp.setContentType("text/html;charset=utf-8");
         //获取请求信息
+        HttpSession session = req.getSession();
         //处理请求
         //响应处理结果
         resp.getWriter().write("<html>");
         resp.getWriter().write("<head>");
         resp.getWriter().write("<body>");
-        resp.getWriter().write("<h3>Welcome to MainPage," + "</h3>");//req中存有请求参数
+        resp.getWriter().write("<h3>Welcome to MainPage," + session.getAttribute("name") + "</h3>");//req中存有请求参数
         resp.getWriter().write("<hr/>");
         resp.getWriter().write("</body>");
         resp.getWriter().write("</head>");

@@ -5,10 +5,7 @@ import com.yuri.servletPro.service.LoginService;
 import com.yuri.servletPro.serviceimpl.LoginServiceImpl;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -59,6 +56,8 @@ public class LoginServlet extends HttpServlet {
             //设置Cookie的有效期
             ck.setMaxAge(3600 * 24 * 3);
             ck.setPath("/checkCk");
+            HttpSession session = req.getSession();
+            session.setAttribute("name", uname);
             resp.addCookie(ck);
             resp.sendRedirect("/page");//登陆成功,重定向到main(避免重复提交)
             return;
