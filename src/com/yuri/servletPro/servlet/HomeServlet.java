@@ -22,10 +22,14 @@ public class HomeServlet extends HttpServlet {
         //获取请求信息
         //处理请求
         //响应处理结果
+        //获取request作用域
+        String str = (String) req.getAttribute("str");
+        System.out.println(str);
         resp.getWriter().write("<html>");
         resp.getWriter().write("<head>");
         resp.getWriter().write("</head>");
         resp.getWriter().write("<body>");
+        resp.getWriter().write("<font color='red' size='5px'>" + str + "</font>");
         resp.getWriter().write("<form action='login' method='post'>");
         resp.getWriter().write("username:<input type='text' name='uname' value=''/><br/>");
         resp.getWriter().write("password:<input type='password' name='pwd' value=''/><br/>");

@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
         if (user != null) {
             resp.getWriter().write("登陆成功....");
         } else {
-            //resp.getWriter().write("登陆失败....");
+            req.setAttribute("str", "用户名或密码错误");
             req.getRequestDispatcher("home").forward(req, resp);//转发相对路径地址
             return;
         }
