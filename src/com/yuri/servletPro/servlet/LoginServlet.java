@@ -49,15 +49,15 @@ public class LoginServlet extends HttpServlet {
         }
 
         if (user != null) {
-
             //创建Cookie信息实现多天免登陆
             //Cookie存储的用户的uid
             Cookie ck = new Cookie("uid", user.getUid() + "");
             //设置Cookie的有效期
             ck.setMaxAge(3600 * 24 * 3);
             ck.setPath("/checkCk");
+            //设置session
             HttpSession session = req.getSession();
-            session.setAttribute("name", uname);
+            session.setAttribute("user", user);
             resp.addCookie(ck);
             resp.sendRedirect("/page");//登陆成功,重定向到main(避免重复提交)
             return;

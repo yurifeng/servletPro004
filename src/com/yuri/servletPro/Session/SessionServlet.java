@@ -33,7 +33,7 @@ public class SessionServlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
 
         //获取请求信息
-        String name = "福克斯的恢复开放活动概况";
+        String name = "haha0x001";
 
         //处理请求信息
         //创建session对象(req中没有sessionid,则创建;如果有sessionid,则取出id)

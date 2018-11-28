@@ -23,7 +23,15 @@
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" scope="PROVIDED" name="Tomcat 9.0.12" level="application_server_libraries" />
-    <orderEntry type="library" exported="" scope="PROVIDED" name="mysql-connector-java-8.0.13" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.13" level="application_server_libraries" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../TOOLS/apache-tomcat-9.0.13/lib/mysql-connector-java-8.0.13.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

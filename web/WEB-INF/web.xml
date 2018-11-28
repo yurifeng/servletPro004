@@ -44,6 +44,14 @@
         <servlet-name>GetSessionServlet</servlet-name>
         <servlet-class>com.yuri.servletPro.Session.GetSessionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>QueryInfoServlet</servlet-name>
+        <servlet-class>com.yuri.servletPro.servlet.QueryInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>QueryInfoServlet</servlet-name>
+        <url-pattern>/cx</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GetSessionServlet</servlet-name>
         <url-pattern>/getSession</url-pattern>
@@ -85,4 +93,8 @@
          <servlet-name>RequestServlet</servlet-name>
          <url-pattern>/project01</url-pattern>
      </servlet-mapping>-->
+
+    <session-config>
+        <session-timeout>1</session-timeout>
+    </session-config>
 </web-app>

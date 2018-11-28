@@ -5,10 +5,7 @@ import com.yuri.servletPro.service.LoginService;
 import com.yuri.servletPro.serviceimpl.LoginServiceImpl;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 /**
@@ -64,6 +61,8 @@ public class CheckCookieServlet extends HttpServlet {
                 LoginService ls = new LoginServiceImpl();
                 User user = ls.checkUIDService(uid);
                 if (user != null) {
+                    //将用户数据存储到session中
+                    req.getSession().setAttribute("user", user);
                     //如果用户存在
                     //重定向
                     resp.sendRedirect("/page");
