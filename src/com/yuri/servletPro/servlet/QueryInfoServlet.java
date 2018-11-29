@@ -27,6 +27,7 @@ public class QueryInfoServlet extends HttpServlet {
         //获取请求信息
         HttpSession session = req.getSession();
 
+        //判断session里面是否有user
         if (session.getAttribute("user") != null) {
             User user = (User) session.getAttribute("user");
             //处理请求
@@ -46,7 +47,7 @@ public class QueryInfoServlet extends HttpServlet {
             resp.getWriter().write("</head>");
             resp.getWriter().write("</html>");
         } else {
-            //session过期之后,就重定向至登陆页面
+            //session中没有user(包括过期和用户自主退出),就重定向至登陆页面
             resp.sendRedirect("/checkCk");
             return;
         }
