@@ -18,19 +18,20 @@ public class ServletContextServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        //获取ServletContext对象
+        /*//获取ServletContext对象
         //方式一:
         ServletContext sc = this.getServletContext();
         //方式二:
         ServletContext sc2 = this.getServletConfig().getServletContext();
         //方式三:
-        ServletContext sc3 = req.getSession().getServletContext();
+        ServletContext sc3 = req.getSession().getServletContext();*/
+
         /*System.out.println(sc == sc2);
         System.out.println(sc == sc3);
         System.out.println(sc2 == sc3);*/
 
-        //使用ServletContext对象完成数据共享
-        sc3.setAttribute("string", "0xfffffffff");
+        /*//使用ServletContext对象完成数据共享
+        sc3.setAttribute("string", "0xfffffffff");*/
 
        /* //获取项目web.xml的全局配置数据
         String name = sc3.getInitParameter("name");

@@ -32,7 +32,7 @@ public class MainServlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         //获取请求信息
         User user = (User) req.getSession().getAttribute("user");
-
+        int count = (int) this.getServletContext().getAttribute("count");
 
         //处理请求
         //响应处理结果
@@ -46,6 +46,7 @@ public class MainServlet extends HttpServlet {
         resp.getWriter().write("</form>");
         resp.getWriter().write("</body>");
         resp.getWriter().write("</head>");
+        resp.getWriter().write("<p>网页共被浏览" + count + "次</p>");
         resp.getWriter().write("</html>");
 
 

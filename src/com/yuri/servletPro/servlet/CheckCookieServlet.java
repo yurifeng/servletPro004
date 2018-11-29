@@ -4,6 +4,7 @@ import com.yuri.servletPro.bean.User;
 import com.yuri.servletPro.service.LoginService;
 import com.yuri.servletPro.serviceimpl.LoginServiceImpl;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -63,6 +64,23 @@ public class CheckCookieServlet extends HttpServlet {
                 if (user != null) {
                     //将用户数据存储到session中
                     req.getSession().setAttribute("user", user);
+
+                    /**
+                     * 在checkCl网页登陆时,记录浏览网页次数
+                     */
+                    //获取计数器
+                    ServletContext servletContext = this.getServletContext();
+                    int count;
+                    if (servletContext.getAttribute("count") != null) {
+                        count = (int) servletContext.getAttribute("count");
+                        //递增
+                        count += 1;
+                        //存储计数器
+                        servletContext.setAttribute("count", count);
+                    } else {
+                        servletContext.setAttribute("count", 1);
+                    }
+
                     //如果用户存在
                     //重定向
                     resp.sendRedirect("/page");

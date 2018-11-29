@@ -4,6 +4,7 @@ import com.yuri.servletPro.bean.User;
 import com.yuri.servletPro.service.LoginService;
 import com.yuri.servletPro.serviceimpl.LoginServiceImpl;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -59,6 +60,23 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = req.getSession();
             session.setAttribute("user", user);
             resp.addCookie(ck);
+
+            /**
+             * 在home页面登陆时,记录浏览网页次数
+             */
+            //获取计数器
+            ServletContext servletContext = this.getServletContext();
+            int count;
+            if (servletContext.getAttribute("count") != null) {
+                count = (int) servletContext.getAttribute("count");
+                //递增
+                count += 1;
+                //存储计数器
+                servletContext.setAttribute("count", count);
+            } else {
+                servletContext.setAttribute("count", 1);
+            }
+
             resp.sendRedirect("/page");//登陆成功,重定向到main(避免重复提交)
             return;
         } else {

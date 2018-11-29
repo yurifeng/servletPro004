@@ -25,7 +25,7 @@ public class GetServletContextServlet extends HttpServlet {
         //设置响应编码格式
         resp.setContentType("text/html;charset=utf-8");
 
-        //获取请求信息
+        /*//获取请求信息
         ServletContext ss = req.getSession().getServletContext();
 
         String string = (String) ss.getAttribute("string");
@@ -41,15 +41,15 @@ public class GetServletContextServlet extends HttpServlet {
         while (initParameterNames.hasMoreElements()) {
             name2 = initParameterNames.nextElement();
             System.out.println(name2 + "-->" + ss.getInitParameter(name2));
-        }
+        }*/
 
-        //获取项目目录下的资源路径
+        /*//获取项目目录下的资源路径
         String path = ss.getRealPath("/resource/project.txt");
-        //System.out.println(path);
+        //System.out.println(path);*/
 
-        //获取项目目录下的资源流对象
+        /*//获取项目目录下的资源流对象
         InputStream resourceStream = ss.getResourceAsStream("/resource/project.txt");
-        System.out.println(resourceStream);
+        System.out.println(resourceStream);*/
 
 
     }
