@@ -3,9 +3,10 @@ package com.yuri.servletPro.servlet;
 import com.yuri.servletPro.bean.User;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Enumeration;
 
 /**
  * @author yurifeng
@@ -32,7 +33,13 @@ public class MainServlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         //获取请求信息
         User user = (User) req.getSession().getAttribute("user");
-        int count = (int) this.getServletContext().getAttribute("count");
+
+        int count = 0;
+
+        if (this.getServletContext().getAttribute("counts") != null) {
+
+            count = (int) this.getServletContext().getAttribute("counts");
+        }
 
         //处理请求
         //响应处理结果

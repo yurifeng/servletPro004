@@ -66,15 +66,15 @@ public class LoginServlet extends HttpServlet {
              */
             //获取计数器
             ServletContext servletContext = this.getServletContext();
-            int count;
-            if (servletContext.getAttribute("count") != null) {
-                count = (int) servletContext.getAttribute("count");
+            int counts;
+            if (servletContext.getAttribute("counts") != null) {
+                counts = (int) servletContext.getAttribute("counts");
                 //递增
-                count += 1;
+                counts += 1;
                 //存储计数器
-                servletContext.setAttribute("count", count);
+                servletContext.setAttribute("counts", counts);
             } else {
-                servletContext.setAttribute("count", 1);
+                servletContext.setAttribute("counts", 1);
             }
 
             resp.sendRedirect("/page");//登陆成功,重定向到main(避免重复提交)

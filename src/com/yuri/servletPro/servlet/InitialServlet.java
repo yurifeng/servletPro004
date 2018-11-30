@@ -11,7 +11,6 @@ import java.io.*;
  */
 public class InitialServlet extends HttpServlet {
 
-
     /**
      * 重写init方法
      * 将文件中的计数器读取到servletContext中
@@ -20,7 +19,7 @@ public class InitialServlet extends HttpServlet {
     public void init() {
         //获取文件中的计数器对象
         //获取文件路径
-        String path = this.getServletContext().getRealPath("res/count.txt");
+        String path = this.getServletContext().getRealPath("number.txt");
         //声明流对象
         FileReader fr = null;
         BufferedReader br = null;
@@ -29,8 +28,11 @@ public class InitialServlet extends HttpServlet {
             fr = new FileReader(path);
             br = new BufferedReader(fr);
             String counts = br.readLine();
-            System.out.println(counts);
-            this.getServletContext().setAttribute("count", counts);
+
+            System.out.println("读取的次数内容:: " + counts);
+
+            //存入计数数据
+            this.getServletContext().setAttribute("counts", counts);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -45,8 +47,6 @@ public class InitialServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
-
-
     }
 
     /**
@@ -57,17 +57,18 @@ public class InitialServlet extends HttpServlet {
     public void destroy() {
 
         //获取网页计数器
-        int counts = (int) this.getServletContext().getAttribute("count");
+        int counts = (int) this.getServletContext().getAttribute("counts");
 
         //获取文件路径
-        String path = this.getServletContext().getRealPath("res/count.txt");
+        String path = this.getServletContext().getRealPath("number.txt");
+        System.out.println("路径: " + path);
+
         //声明BufferedWriter
         BufferedWriter bw = null;
         FileWriter fw = null;
-        //System.out.println(path);
 
         try {
-            fw = new FileWriter(path);
+            fw = new FileWriter(path, false);
             bw = new BufferedWriter(fw);
             bw.write(counts);
             bw.flush();
@@ -85,7 +86,5 @@ public class InitialServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
-
-
     }
 }
